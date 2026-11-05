@@ -60,7 +60,7 @@ function Hero() {
             <motion.span className="inline-block h-px bg-coffee" initial={{ width: 0 }} animate={{ width: 40 }} transition={{ delay: d, duration: 1, ease: EASE }} />
             Personalised nutrition · Lasting wellness
           </motion.p>
-          <SplitHeadline as="h1" immediate delay={d} text={"ILANA Nutrition & Wellness:\nPersonalised Nutrition for Every Stage of Life"} className="display mt-6 text-forest" />
+          <SplitHeadline as="h1" immediate delay={d} text={"Nourish your"} className="display mt-6 text-forest" />
           <motion.p
             className="display font-serif text-forest"
             style={{ fontWeight: 350, letterSpacing: "-0.02em" }}
