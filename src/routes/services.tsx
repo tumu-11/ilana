@@ -4,15 +4,13 @@ import { useEffect, useState } from "react";
 import { SERVICES, SPORTS_IMAGES } from "@/lib/site";
 import { SplitHeadline, Reveal } from "@/components/site/motion";
 import { ClosingCta } from "@/components/site/ClosingCta";
+import { pageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Nutrition Services - ILANA Nutrition & Wellness" },
-      { name: "description", content: "Weight management, sports nutrition, pregnancy & postpartum, child, older adult and health-condition nutrition support." },
-      { property: "og:title", content: "Nutrition Services - ILANA" },
-      { property: "og:description", content: "Six areas of personalised nutrition support for every stage of life." },
-    ],
+  head: () => pageSeo({
+    title: "Nutrition Services | ILANA Nutrition & Wellness",
+    description: "Explore ILANA's personalised nutrition services for weight management, sports, pregnancy, children, older adults and health conditions.",
+    path: "/services",
   }),
   component: Services,
 });

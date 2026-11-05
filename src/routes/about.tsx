@@ -4,15 +4,13 @@ import consult from "@/assets/consult.jpg";
 import { SplitHeadline, Reveal } from "@/components/site/motion";
 import { BotanicalBranch, RotatingBadge } from "@/components/site/Botanical";
 import { ClosingCta } from "@/components/site/ClosingCta";
+import { pageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About ILANA - Our Philosophy of Nourishment & Growth" },
-      { name: "description", content: "The story, mission and values behind ILANA Nutrition & Wellness - personalised, practical, sustainable nutrition." },
-      { property: "og:title", content: "About ILANA Nutrition & Wellness" },
-      { property: "og:description", content: "Why we believe nutrition is about growth, nourishment and flourishing." },
-    ],
+  head: () => pageSeo({
+    title: "About ILANA | Our Nutrition & Wellness Approach",
+    description: "Learn about ILANA's compassionate, practical approach to personalised nutrition, sustainable habits and healthier living.",
+    path: "/about",
   }),
   component: About,
 });

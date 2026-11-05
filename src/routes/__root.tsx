@@ -15,6 +15,7 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Preloader } from "@/components/site/Preloader";
+import { ORGANIZATION_SCHEMA, WEBSITE_SCHEMA } from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -78,10 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ILANA Nutrition & Wellness" },
-      { name: "description", content: "Personalised nutrition for every stage of life." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { "script:ld+json": { "@context": "https://schema.org", "@graph": [ORGANIZATION_SCHEMA, WEBSITE_SCHEMA] } },
     ],
     links: [
       {

@@ -6,17 +6,15 @@ import { ArrowUpRight, Mail, MessageCircle, Phone, Check } from "lucide-react";
 import { CONTACT, SERVICES, whatsappLink } from "@/lib/site";
 import { SplitHeadline, Reveal, EASE } from "@/components/site/motion";
 import { BotanicalBranch } from "@/components/site/Botanical";
+import { pageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
   validateSearch: (s: Record<string, unknown>): { interest?: string } =>
     typeof s["interest"] === "string" ? { interest: s["interest"] } : {},
-  head: () => ({
-    meta: [
-      { title: "Book a Consultation - Contact ILANA Nutrition & Wellness" },
-      { name: "description", content: "Call, WhatsApp, email or send an enquiry to book a personalised nutrition consultation with ILANA." },
-      { property: "og:title", content: "Book a Consultation with ILANA" },
-      { property: "og:description", content: "Start your journey to better nourishment - get in touch today." },
-    ],
+  head: () => pageSeo({
+    title: "Contact ILANA | Nutrition & Wellness Consultations",
+    description: "Contact ILANA to book a personalised nutrition consultation and start building practical, sustainable habits for your wellbeing.",
+    path: "/contact",
   }),
   component: Contact,
 });

@@ -9,15 +9,13 @@ import { SERVICES } from "@/lib/site";
 import { SplitHeadline, Reveal, EASE } from "@/components/site/motion";
 import { BotanicalBranch, RotatingBadge } from "@/components/site/Botanical";
 import { ClosingCta } from "@/components/site/ClosingCta";
+import { pageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "ILANA Nutrition & Wellness - Nourish. Grow. Thrive." },
-      { name: "description", content: "Personalised nutrition for every stage of life - weight, sports, pregnancy, children, older adults and health conditions." },
-      { property: "og:title", content: "ILANA Nutrition & Wellness - Nourish. Grow. Thrive." },
-      { property: "og:description", content: "Personalised, practical nutrition for every goal and every stage of life." },
-    ],
+  head: () => pageSeo({
+    title: "ILANA Nutrition & Diet | Personalised Food & Wellness",
+    description: "Discover ILANA Nutrition & Wellness for personalised nutrition, healthy eating guidance and practical diet support. Explore tailored food and nutrition services for every stage of life.",
+    path: "/",
   }),
   component: Home,
 });
@@ -62,7 +60,7 @@ function Hero() {
             <motion.span className="inline-block h-px bg-coffee" initial={{ width: 0 }} animate={{ width: 40 }} transition={{ delay: d, duration: 1, ease: EASE }} />
             Personalised nutrition · Lasting wellness
           </motion.p>
-          <SplitHeadline as="h1" immediate delay={d} text={"Nourish your"} className="display mt-6 text-forest" />
+          <SplitHeadline as="h1" immediate delay={d} text={"ILANA Nutrition & Wellness:\nPersonalised Nutrition for Every Stage of Life"} className="display mt-6 text-forest" />
           <motion.p
             className="display font-serif text-forest"
             style={{ fontWeight: 350, letterSpacing: "-0.02em" }}
