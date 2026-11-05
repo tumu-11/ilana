@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Check } from "lucide-react";
-import { SERVICES } from "@/lib/site";
+import { useEffect, useState } from "react";
+import { SERVICES, SPORTS_IMAGES } from "@/lib/site";
 import { SplitHeadline, Reveal } from "@/components/site/motion";
 import { ClosingCta } from "@/components/site/ClosingCta";
 
@@ -15,6 +16,35 @@ export const Route = createFileRoute("/services")({
   }),
   component: Services,
 });
+
+function SportsSlideshow({ alt }: { alt: string }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveIndex((index) => (index + 1) % SPORTS_IMAGES.length);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative aspect-[4/5] overflow-hidden rounded-t-[999px]">
+      {SPORTS_IMAGES.map((image, index) => (
+        <img
+          key={image}
+          src={image}
+          alt={index === activeIndex ? alt : ""}
+          aria-hidden={index !== activeIndex}
+          loading={index === 0 ? "eager" : "lazy"}
+          width={1024}
+          height={1280}
+          className={"absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out " + (index === activeIndex ? "opacity-100" : "opacity-0")}
+        />
+      ))}
+    </div>
+  );
+}
 
 function Services() {
   return (
@@ -37,9 +67,13 @@ function Services() {
           <section key={s.slug} id={s.slug} className={"scroll-mt-20 " + (dark ? "bg-forest text-ivory grain" : "")}>
             <div className="container-x grid items-center gap-12 py-24 md:py-32 lg:grid-cols-12">
               <Reveal className={"relative lg:col-span-5 " + (dark ? "lg:order-2 lg:col-start-8" : "")}>
-                <div className="overflow-hidden rounded-t-[999px]">
-                  <img src={s.image} alt={s.alt} loading="lazy" width={1024} height={1280} className="aspect-[4/5] w-full object-cover transition-transform duration-[1.5s] ease-out hover:scale-105" />
-                </div>
+                {s.slug === "sports" ? (
+                  <SportsSlideshow alt={s.alt} />
+                ) : (
+                  <div className="overflow-hidden rounded-t-[999px]">
+                    <img src={s.image} alt={s.alt} loading="lazy" width={1024} height={1280} className="aspect-[4/5] w-full object-cover transition-transform duration-[1.5s] ease-out hover:scale-105" />
+                  </div>
+                )}
                 <span className={"absolute -top-6 font-serif text-[7rem] leading-none italic md:text-[10rem] " + (dark ? "-left-4 text-gold" : "-right-4 text-terracotta")}>
                   0{i + 1}
                 </span>

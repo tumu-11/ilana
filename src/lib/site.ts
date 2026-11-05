@@ -1,10 +1,12 @@
 import heroBowl from "@/assets/hero-bowl.jpg";
-import sports from "@/assets/sports.jpg";
 import pregnancy from "@/assets/pregnancy.jpg";
 import child from "@/assets/child.jpg";
 import elder from "@/assets/elder.jpg";
 import consult from "@/assets/consult.jpg";
-
+import fit from "@/assets/fit.jpg";
+import fit1 from "@/assets/fit1.jpg";
+import fitness from "@/assets/fitness.jpg";
+import sports from "@/assets/sports.jpg";
 /** Business contact details - edit here to update the whole site. */
 export const CONTACT = {
   phoneDisplay: "0787 519 840",
@@ -15,6 +17,8 @@ export const CONTACT = {
 
 export const whatsappLink = (text = "Hello ILANA, I'd like to book a nutrition consultation.") =>
   `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(text)}`;
+
+export const SPORTS_IMAGES = [fit, fit1, fitness, sports];
 
 export type Service = {
   slug: string;
@@ -42,8 +46,8 @@ export const SERVICES: Service[] = [
     short: "Fuel for training, muscle development, performance and recovery.",
     long: "Practical guidance on what, when and how much to eat to support your training - from everyday gym-goers to committed athletes working towards an event.",
     forWho: ["Gym members and runners", "Athletes in training", "Anyone building strength"],
-    image: sports,
-    alt: "A runner drinking water and holding a banana at sunrise",
+    image: fit,
+    alt: "A black man in workout attire lifting dumbbells in a gym",
   },
   {
     slug: "pregnancy",

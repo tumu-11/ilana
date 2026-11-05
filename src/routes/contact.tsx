@@ -70,11 +70,12 @@ function Contact() {
       return;
     }
     setErrors({});
-    // Online submission isn't connected yet - the enquiry is prepared for WhatsApp instead.
     const area = SERVICES.find((s) => s.slug === r.data.interest)?.title ?? r.data.interest;
-    setSent(
-      whatsappLink(`Hello ILANA, my name is ${r.data.name}. I'm interested in ${area}. ${r.data.message ?? ""} You can reach me at ${r.data.contact}.`),
+    const message = whatsappLink(
+      `Hello ILANA, my name is ${r.data.name}. I'm interested in ${area}. ${r.data.message ?? ""} You can reach me at ${r.data.contact}.`,
     );
+    setSent(message);
+    window.open(message, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -120,10 +121,10 @@ function Contact() {
                   </span>
                   <h2 className="mt-8 text-4xl text-forest">Your enquiry is ready.</h2>
                   <p className="mx-auto mt-4 max-w-md text-ink/75">
-                    Online sending isn't switched on yet, so tap below to send your details to ILANA on WhatsApp in one step.
+                    WhatsApp has opened with your details ready to send. If it didn't open, use the button below.
                   </p>
                   <a href={sent} target="_blank" rel="noreferrer" className="btn-primary mt-8">
-                    Send via WhatsApp <ArrowUpRight className="h-4 w-4" />
+                    Send on WhatsApp <ArrowUpRight className="h-4 w-4" />
                   </a>
                   <button onClick={() => setSent(null)} className="link-underline mt-6 block w-full text-sm text-coffee">Edit my enquiry</button>
                 </motion.div>
@@ -148,7 +149,7 @@ function Contact() {
                     <textarea id="message" name="message" rows={4} className={inputCls + " resize-none"} placeholder="Tell us a little about your goals" />
                   </Field>
                   <button type="submit" className="btn-primary">
-                    Send enquiry <ArrowUpRight className="h-4 w-4" />
+                    Send on WhatsApp <ArrowUpRight className="h-4 w-4" />
                   </button>
                 </motion.form>
               )}
