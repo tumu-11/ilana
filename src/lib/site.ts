@@ -12,7 +12,7 @@ export const CONTACT = {
   phoneDisplay: "0787 519 840",
   phoneTel: "+256787519840",
   whatsapp: "+256787519840",
-  email: "jtfrancesca@gmail.com",
+  email: "getilananutrition@gmail.com",
 };
 
 export const whatsappLink = (text = "Hello ILANA, I'd like to book a nutrition consultation.") =>
