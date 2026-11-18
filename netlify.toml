@@ -1,3 +1,21 @@
 [build]
   command = "npm run build"
   publish = "dist/client"
+
+[[redirects]]
+  from = "http://getilana.com/*"
+  to = "https://getilana.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.getilana.com/*"
+  to = "https://getilana.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.getilana.com/*"
+  to = "https://getilana.com/:splat"
+  status = 301
+  force = true
